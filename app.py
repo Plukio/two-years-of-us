@@ -154,12 +154,23 @@ with st.popover("Filter Event"):
     "Select Tags to Filter Event",
     list(all_tags) + ["All"],
     ["All"])
+    
+    start_date = st.date_input("Start Date")
+    end_date = st.date_input("End Date")
 
 filtered_events = []
 if "All" in selected_tag:
-    filtered_events = timeline_data["events"]
+    # Apply date filter only
+    filtered_events = [
+        event for event in timeline_data["events"]
+        if start_date <= event.get("date") <= end_date
+    ]
 else:
-    filtered_events = [event for event in timeline_data["events"] if event.get("tag") in selected_tag]
+    # Apply both tag and date filters
+    filtered_events = [
+        event for event in timeline_data["events"]
+        if event.get("tag") in selected_tag and start_date <= event.get("date") <= end_date
+    ]
 
 # Convert filtered data to JSON format for timeline rendering
 filtered_timeline_data = {
