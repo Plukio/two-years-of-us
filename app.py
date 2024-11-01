@@ -5,7 +5,8 @@ import datetime
 import boto3
 from botocore.exceptions import NoCredentialsError
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2 import service_account
+
 
 # AWS S3 Configuration
 
@@ -18,7 +19,9 @@ SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 SHEET_NAME = "TimelineEvents"
 
 # Authenticate and open Google Sheet
-credentials = ServiceAccountCredentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=SCOPE)
+credentials = service_account.Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"], scopes=SCOPE)
+
 client = gspread.authorize(credentials)
 sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/1dpPFk7gXnlOp-Y_6N0mAjUp1bpkXAf7AjER1ry3DqCs/edit?usp=sharing").sheet1
 
