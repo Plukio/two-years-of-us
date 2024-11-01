@@ -156,7 +156,7 @@ with st.popover("Filter Event"):
     ["All"])
 
 filtered_events = []
-if selected_tag == "All":
+if "All" in selected_tag:
     filtered_events = timeline_data["events"]
 else:
     filtered_events = [event for event in timeline_data["events"] if event.get("tag") in selected_tag]
