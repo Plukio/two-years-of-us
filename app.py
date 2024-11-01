@@ -78,7 +78,7 @@ with st.sidebar.form(key="add_event_form"):
     event_text = st.text_area("Event Text", "Event Description")
     
     # Image upload
-    uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png"])
+    uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png", "heic"])
     event_caption = st.text_input("Media Caption", "Image Caption")
     
     # Date picker for start date
