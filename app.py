@@ -4,6 +4,7 @@ import json
 import datetime
 import boto3
 from botocore.exceptions import NoCredentialsError
+from datetime import date
 import gspread
 from google.oauth2 import service_account
 
