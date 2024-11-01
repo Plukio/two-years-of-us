@@ -171,4 +171,4 @@ timeline_data_json = json.dumps(filtered_timeline_data)
 
 # Display the filtered timeline
 
-timeline(timeline_data_json, height=600)
+timeline(timeline_data_json, height=700)
