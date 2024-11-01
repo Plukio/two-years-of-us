@@ -152,8 +152,8 @@ with st.sidebar.form(key="add_event_form"):
 with st.popover("Filter Event"):
     selected_tag = st.multiselect(
     "Select Tags to Filter Event",
-    list(all_tags),
-    [list(all_tags)[1]])
+    list(all_tags) + ["All"],
+    ["All"])
 
 filtered_events = []
 if selected_tag == "All":
