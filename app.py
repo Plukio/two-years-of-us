@@ -161,7 +161,7 @@ with st.popover("Filter Event"):
     
     start_date, end_date = st.date_input(
         "Select your vacation for next year",
-        (last_, datetime.date(today.year, 1, 7)),
+        (last_, now_),
         last_,
         now_,
         format="MM.DD.YYYY",
