@@ -148,7 +148,10 @@ with st.sidebar.form(key="add_event_form"):
 # Filter events by selected tag
 
 
+today = datetime.datetime.now()
 
+now_ = datetime.date(today.year, today.month, today.day)
+last_ = datetime.date(today.year - 1, 1, 1)
 
 with st.popover("Filter Event"):
     selected_tag = st.multiselect(
@@ -156,8 +159,13 @@ with st.popover("Filter Event"):
     list(all_tags) + ["All"],
     ["All"])
     
-    start_date = st.date_input("Start Date")
-    end_date = st.date_input("End Date")
+    start_date, end_date = st.date_input(
+        "Select your vacation for next year",
+        (last_, datetime.date(today.year, 1, 7)),
+        last_,
+        now_,
+        format="MM.DD.YYYY",
+    )
 
 def get_event_date(event_date):
     return date(int(event_date["year"]), int(event_date["month"]), int(event_date["day"]))
